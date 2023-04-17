@@ -8,7 +8,11 @@ public class CompositionIngredientProduit {
 
     @Id
     @Column(name = "produit_id")
-    private Integer id;
+    private Integer produit_id;
+
+    @Id
+    @Column(name = "ingredient_id")
+    private Integer ingredient_id;
 
     @Column(name = "quantite")
     private String quantite;
@@ -16,12 +20,20 @@ public class CompositionIngredientProduit {
     public CompositionIngredientProduit() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getProduit_id() {
+        return produit_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setProduit_id(Integer produit_id) {
+        this.produit_id = produit_id;
+    }
+
+    public Integer getIngredient_id() {
+        return ingredient_id;
+    }
+
+    public void setIngredient_id(Integer ingredient_id) {
+        this.ingredient_id = ingredient_id;
     }
 
     public String getQuantite() {
@@ -35,7 +47,8 @@ public class CompositionIngredientProduit {
     @Override
     public String toString() {
         return "CompositionIngredientProduit{" +
-                "id=" + id +
+                "produit_id=" + produit_id +
+                ", ingredient_id=" + ingredient_id +
                 ", quantite='" + quantite + '\'' +
                 '}';
     }
