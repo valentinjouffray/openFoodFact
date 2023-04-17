@@ -9,7 +9,7 @@ public class GenererApp {
         try(EntityManagerFactory ef = Persistence.createEntityManagerFactory("formation-pu"))
         {
             try (EntityManager em = ef.createEntityManager()){
-
+                System.out.println("Test");
             }
         }
     }
