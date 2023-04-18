@@ -1,7 +1,6 @@
 package dev.dao;
 
 import dev.entites.Categorie;
-import dev.entites.Produit;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -37,11 +36,6 @@ public class CategorieDaoJpa extends DaoManager implements CategorieDao{
         query.setParameter("ancienNom",ancienNom);
         query.setParameter("nouveauNom",nouveauNom);
         return query.executeUpdate();
-    }
-
-    @Override
-    public int mettreAJourProduits(List<Produit> nouveauProduit) {
-        return 0;
     }
 
     @Override

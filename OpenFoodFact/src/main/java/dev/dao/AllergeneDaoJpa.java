@@ -1,7 +1,6 @@
 package dev.dao;
 
 import dev.entites.Allergene;
-import dev.entites.Produit;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -39,10 +38,6 @@ public class AllergeneDaoJpa extends DaoManager implements AllergeneDao{
         return query.executeUpdate();
     }
 
-    @Override
-    public int mettreAJourProduits(List<Produit> nouveauProduit) {
-        return 0;
-    }
 
     @Override
     public int supprimer(Allergene allergene) {
