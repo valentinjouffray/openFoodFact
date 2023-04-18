@@ -17,7 +17,7 @@ public class Ingredient {
     @Column(name = "nom")
     private String nom;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "Composition",
             joinColumns = @JoinColumn(name = "ingredient_id"),
