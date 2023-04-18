@@ -16,7 +16,7 @@
             <property name="jakarta.persistence.jdbc.password" value="root"/>
             <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
 
-            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <!--<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>-->
 
             <property name = "hibernate.show_sql" value = "true" />
 <!--            Montre les requêtes sql-->
