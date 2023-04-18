@@ -9,40 +9,45 @@ public class CategorieDaoJpa extends DaoManager implements CategorieDao{
 
     @Override
     public List<Categorie> extraire() {
-        try(EntityManagerFactory ef = Persistence.createEntityManagerFactory("formation-pu")){
-            EntityManager entityManager = ef.createEntityManager();
-            TypedQuery<Categorie> categorieTypedQuery = entityManager.createQuery("select a from Categorie a", Categorie.class);
-            entityManager.close();
-            return categorieTypedQuery.getResultList();
-        }
+        EntityManager entityManager = managerFactory.createEntityManager();
+        TypedQuery<Categorie> categorieTypedQuery = entityManager.createQuery("select a from Categorie a", Categorie.class);
+        List<Categorie> resultList = categorieTypedQuery.getResultList();
+        entityManager.close();
+        return resultList;
     }
 
     @Override
     public void inserer(Categorie categorie) {
-        try(EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("formation-pu")){
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
-            EntityTransaction transaction = entityManager.getTransaction();
-            transaction.begin();
-            entityManager.persist(categorie);
-            transaction.commit();
-            entityManager.close();
-        }
+        EntityManager entityManager = managerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        entityManager.persist(categorie);
+        transaction.commit();
+        entityManager.close();
     }
 
     @Override
     public int mettreAJourNom(String ancienNom, String nouveauNom) {
         EntityManager entityManager = managerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
         Query query = entityManager.createQuery("update Categorie set nom = :nouveauNom where nom = :ancienNom");
         query.setParameter("ancienNom",ancienNom);
         query.setParameter("nouveauNom",nouveauNom);
-        return query.executeUpdate();
+        int nbRow = query.executeUpdate();
+        transaction.commit();
+        return nbRow;
     }
 
     @Override
     public int supprimer(Categorie categorie) {
         EntityManager entityManager = managerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
         Query query = entityManager.createQuery("delete from Categorie a where a.id= :id");
         query.setParameter("id",categorie.getId());
-        return query.executeUpdate();
+        int nbRow = query.executeUpdate();
+        transaction.commit();
+        return nbRow;
     }
 }
