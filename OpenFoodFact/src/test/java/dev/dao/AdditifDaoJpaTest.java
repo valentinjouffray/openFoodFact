@@ -24,27 +24,27 @@ public class AdditifDaoJpaTest extends TestCase {
     }
 
     @Test
-    public void testExtraire() throws SQLException, IOException, ClassNotFoundException {
+    public void testExtraire() {
         List<Additif> lectureAdditif = additifDaoJpa.extraire();
         LOG.info(lectureAdditif.toString());
         assertNotNull(lectureAdditif);
     }
 
     @Test
-    public void testInserer() throws SQLException, IOException, ClassNotFoundException {
+    public void testInserer() {
         a.setNom("Additif01");
         additifDaoJpa.inserer(a);
     }
 
     @Test
-    public void testMettreAJourNom() throws SQLException, IOException, ClassNotFoundException {
+    public void testMettreAJourNom() {
         int modif = additifDaoJpa.mettreAJourNom("Additif01", "Additif01a");
         LOG.info("Ligne(s) modifiée(s) : " + modif);
         assertTrue(modif > 0);
     }
 
     @Test
-    public void testSupprimer() throws SQLException, IOException, ClassNotFoundException {
+    public void testSupprimer() {
         a.setNom("Additif01a");
         int supprimer = additifDaoJpa.supprimer(a);
         LOG.info("Suppression : " + supprimer);

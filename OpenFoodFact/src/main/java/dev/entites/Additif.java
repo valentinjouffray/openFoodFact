@@ -17,7 +17,7 @@ public class Additif {
     @Column(name = "nom")
     private String nom;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "produit_id")
     private List<Produit> produits = new ArrayList<Produit>();
 
