@@ -6,14 +6,12 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 
 public class AdditifDaoJpa extends DaoManager implements AdditifDao {
     @Override
-    public List<Additif> extraire() throws SQLException, IOException, ClassNotFoundException {
+    public List<Additif> extraire() {
         TypedQuery<Additif> query;
         List<Additif> resultList;
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
@@ -25,7 +23,7 @@ public class AdditifDaoJpa extends DaoManager implements AdditifDao {
     }
 
     @Override
-    public void inserer(Additif additif) throws ClassNotFoundException, IOException, SQLException {
+    public void inserer(Additif additif) {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
 
             EntityTransaction tx = entityManager.getTransaction();
@@ -38,7 +36,7 @@ public class AdditifDaoJpa extends DaoManager implements AdditifDao {
     }
 
     @Override
-    public int mettreAJourNom(String ancienAdditif, String nouvelAdditif) throws ClassNotFoundException, IOException, SQLException {
+    public int mettreAJourNom(String ancienAdditif, String nouvelAdditif) {
         Query query;
         int ligne;
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
@@ -58,7 +56,7 @@ public class AdditifDaoJpa extends DaoManager implements AdditifDao {
     }
 
     @Override
-    public int supprimer(Additif additif) throws ClassNotFoundException, IOException, SQLException {
+    public int supprimer(Additif additif) {
         Query query;
         int verif;
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
