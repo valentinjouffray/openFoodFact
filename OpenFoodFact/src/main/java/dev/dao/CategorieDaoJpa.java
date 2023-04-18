@@ -36,6 +36,7 @@ public class CategorieDaoJpa extends DaoManager implements CategorieDao{
         query.setParameter("nouveauNom",nouveauNom);
         int nbRow = query.executeUpdate();
         transaction.commit();
+        entityManager.close();
         return nbRow;
     }
 
@@ -48,6 +49,7 @@ public class CategorieDaoJpa extends DaoManager implements CategorieDao{
         query.setParameter("id",categorie.getId());
         int nbRow = query.executeUpdate();
         transaction.commit();
+        entityManager.close();
         return nbRow;
     }
 }
