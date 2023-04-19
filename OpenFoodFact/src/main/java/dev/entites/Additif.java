@@ -17,7 +17,7 @@ public class Additif {
     @Column(name = "nom")
     private String nom;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     @JoinColumn(name = "produit_id")
     private List<Produit> produits = new ArrayList<Produit>();
 
@@ -53,7 +53,6 @@ public class Additif {
         return "Additif{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", produits=" + produits +
                 '}';
     }
 }

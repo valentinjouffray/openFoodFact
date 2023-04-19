@@ -20,21 +20,21 @@ public class Produit {
     @Embedded
     private Vitamine vitamine;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "categorie_id")
     private Categorie categorie;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "marque_id")
     private Marque marque;
 
-    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     private List<Allergene> allergenes = new ArrayList<Allergene>();
 
-    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
-    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     private List<Additif> additifs = new ArrayList<Additif>();
 
     public Produit() {
@@ -109,12 +109,6 @@ public class Produit {
         return "Produit{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", vitamine=" + vitamine +
-                ", categorie=" + categorie +
-                ", marque=" + marque +
-                ", allergenes=" + allergenes +
-                ", ingredients=" + ingredients +
-                ", additifs=" + additifs +
                 '}';
     }
 }

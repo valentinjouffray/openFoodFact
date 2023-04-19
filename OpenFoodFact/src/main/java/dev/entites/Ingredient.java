@@ -17,7 +17,7 @@ public class Ingredient {
     @Column(name = "nom")
     private String nom;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     @JoinTable(
             name = "Composition",
             joinColumns = @JoinColumn(name = "ingredient_id"),
@@ -56,7 +56,6 @@ public class Ingredient {
         return "Ingredient{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", produits=" + produits +
                 '}';
     }
 }

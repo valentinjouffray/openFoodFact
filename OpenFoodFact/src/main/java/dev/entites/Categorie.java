@@ -17,7 +17,7 @@ public class Categorie {
     @Column(name = "nom")
     private String nom;
 
-    @OneToMany(mappedBy = "categorie")
+    @OneToMany(mappedBy = "categorie",cascade = CascadeType.MERGE)
     private List<Produit> produits = new ArrayList<Produit>();
 
     public Categorie() {
@@ -52,7 +52,6 @@ public class Categorie {
         return "Categorie{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", produits=" + produits +
                 '}';
     }
 }
