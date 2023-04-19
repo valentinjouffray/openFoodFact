@@ -8,8 +8,17 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
-
+/** AdditifDaoJpa permet d'interagir avec la Table Additif de notre Bdd
+ * @author Clement
+ * @version 1.00
+ * Date de mise à jour : 18/04/2023
+ */
 public class AdditifDaoJpa extends DaoManager implements AdditifDao {
+
+    /**
+     * Permet de lire les données de la Table Additif
+     * @return une liste d'additifs représentant les données de la Table Additif
+     */
     @Override
     public List<Additif> extraire() {
         TypedQuery<Additif> query;
@@ -22,6 +31,10 @@ public class AdditifDaoJpa extends DaoManager implements AdditifDao {
         return resultList;
     }
 
+    /**
+     * Permet d'insérer des données dans la Table Additif
+     * @param additif notre additif à insérer
+     */
     @Override
     public void inserer(Additif additif) {
         try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
@@ -35,6 +48,12 @@ public class AdditifDaoJpa extends DaoManager implements AdditifDao {
         }
     }
 
+    /**
+     * Permet de mettre à jour les données de l'additif dans la Table Additif
+     * @param ancienAdditif le nom de l'additif à modifier
+     * @param nouvelAdditif le nouveau nom de l'additif à modifier
+     * @return le nombre de lignes affectées
+     */
     @Override
     public int mettreAJourNom(String ancienAdditif, String nouvelAdditif) {
         Query query;
@@ -55,6 +74,11 @@ public class AdditifDaoJpa extends DaoManager implements AdditifDao {
         return ligne;
     }
 
+    /**
+     * Permet de supprimer un additif dans la Table Additif
+     * @param additif le nom de l'additif à supprimer
+     * @return le nombre de lignes affectées
+     */
     @Override
     public int supprimer(Additif additif) {
         Query query;

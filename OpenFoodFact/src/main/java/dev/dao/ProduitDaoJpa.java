@@ -51,7 +51,7 @@ public class ProduitDaoJpa extends DaoManager implements ProduitDao{
     /**
      * Permet de mettre à jour les données d'un produit dans la Table Produit
      * @param ancienProduit le nom du produit à modifier
-     * @param nouveauProduit le nom du produit à modifier
+     * @param nouveauProduit le nouveau nom du produit à modifier
      * @return le nombre de lignes affectées
      */
     @Override
