@@ -17,6 +17,9 @@ public class Produit {
     @Column(name = "nom")
     private String nom;
 
+    @Column(name = "nutritionGradeFr")
+    private String gradeNutrition;
+
     @Embedded
     private Vitamine vitamine;
 
@@ -38,6 +41,14 @@ public class Produit {
     private List<Additif> additifs = new ArrayList<Additif>();
 
     public Produit() {
+    }
+
+    public String getGradeNutrition() {
+        return gradeNutrition;
+    }
+
+    public void setGradeNutrition(String gradeNutrition) {
+        this.gradeNutrition = gradeNutrition;
     }
 
     public Vitamine getVitamine() {
@@ -109,6 +120,7 @@ public class Produit {
         return "Produit{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
+                ", nutritionScore='" + gradeNutrition + '\'' +
                 '}';
     }
 }

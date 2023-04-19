@@ -13,14 +13,6 @@ public class FichierService {
 
     private static List<Produit> produits;
 
-    public static void main(String[] args) throws IOException {
-        final File file = getResource(FILE_NAME);
-        readFile(file);
-        for (Produit p : produits)
-        System.out.println(p.getIngredients());
-
-    }
-
     public static void readFile(File file) throws IOException {
 
         produits = new ArrayList<Produit>();
@@ -43,6 +35,7 @@ public class FichierService {
 
                 Produit p = new Produit();
                 p.setNom(data[2]);
+                p.setGradeNutrition(data[3]);
                 produitTemp.add(p);
 
                 if (data[29].contains("-")) {
