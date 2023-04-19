@@ -18,7 +18,7 @@ public class Produit {
     private String nom;
 
     @Column(name = "nutritionGradeFr")
-    private String gradeNutrition;
+    private GradeNutrition gradeNutrition;
 
     @Embedded
     private Vitamine vitamine;
@@ -43,11 +43,53 @@ public class Produit {
     public Produit() {
     }
 
-    public String getGradeNutrition() {
+    public GradeNutrition getGradeNutrition() {
         return gradeNutrition;
     }
 
     public void setGradeNutrition(String gradeNutrition) {
+        String gradeNutritionUpperCase = gradeNutrition.toUpperCase();
+        switch (gradeNutritionUpperCase){
+            case "A" :
+                this.gradeNutrition = GradeNutrition.A;
+                break;
+            case "B" :
+                this.gradeNutrition = GradeNutrition.B;
+                break;
+            case "C" :
+                this.gradeNutrition = GradeNutrition.C;
+                break;
+            case "D" :
+                this.gradeNutrition = GradeNutrition.D;
+                break;
+            case "E" :
+                this.gradeNutrition = GradeNutrition.E;
+                break;
+        }
+    }
+
+    public void setGradeNutrition(char gradeNutrition){
+        char gradeNutritionUpperCase = Character.toUpperCase(gradeNutrition);
+        switch (gradeNutritionUpperCase){
+            case 'A' :
+                this.gradeNutrition = GradeNutrition.A;
+                break;
+            case 'B' :
+                this.gradeNutrition = GradeNutrition.B;
+                break;
+            case 'C' :
+                this.gradeNutrition = GradeNutrition.C;
+                break;
+            case 'D' :
+                this.gradeNutrition = GradeNutrition.D;
+                break;
+            case 'E' :
+                this.gradeNutrition = GradeNutrition.E;
+                break;
+        }
+    }
+
+    public void setGradeNutrition(GradeNutrition gradeNutrition) {
         this.gradeNutrition = gradeNutrition;
     }
 
