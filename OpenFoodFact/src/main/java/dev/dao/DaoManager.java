@@ -4,13 +4,14 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public class DaoManager {
-    protected static EntityManagerFactory managerFactory;
 
-    public static void OuvrirConnexion(){
-        managerFactory = Persistence.createEntityManagerFactory("formation-pu");
+    protected static EntityManagerFactory entityManagerFactory;
+
+    public static void OuvrirConnexion() {
+        entityManagerFactory = Persistence.createEntityManagerFactory("formation-pu");
     }
 
-    public static void FermerConnexion(){
-        managerFactory.close();
+    public static void FermerConnexion() {
+        entityManagerFactory.close();
     }
 }

@@ -28,13 +28,13 @@ public class Produit {
     @JoinColumn(name = "marque_id")
     private Marque marque;
 
-    @ManyToMany(mappedBy = "produits")
+    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER)
     private List<Allergene> allergenes = new ArrayList<Allergene>();
 
-    @ManyToMany(mappedBy = "produits")
+    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER)
     private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
-    @ManyToMany(mappedBy = "produits")
+    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER)
     private List<Additif> additifs = new ArrayList<Additif>();
 
     public Produit() {
