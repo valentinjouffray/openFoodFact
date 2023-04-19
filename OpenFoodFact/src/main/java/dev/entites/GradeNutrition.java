@@ -1,7 +1,7 @@
 package dev.entites;
 
 public enum GradeNutrition {
-    A,B,C,D,E;
+    A,B,C,D,E,F;
     public String getGrade() {
         switch (this){
             case A -> {
@@ -18,6 +18,9 @@ public enum GradeNutrition {
             }
             case E -> {
                 return "E";
+            }
+            case F -> {
+                return "F";
             }
         }
         return null;
