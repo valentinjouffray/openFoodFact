@@ -18,6 +18,7 @@ public class Produit {
     private String nom;
 
     @Column(name = "nutritionGradeFr")
+    @Enumerated(EnumType.STRING)
     private GradeNutrition gradeNutrition;
 
     @Embedded
