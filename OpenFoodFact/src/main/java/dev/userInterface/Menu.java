@@ -10,15 +10,12 @@ public class Menu {
 
     public void afficherMenuPrincipal(){
         LOGG.info("placeholder app name");//TODO remplacer le titre de l'application
-        boolean exit;
+//        boolean exit;
         Scanner scanner = new Scanner(System.in);
-        do {
-            String reponseUtilisateur = validerReponseUtilisateur(scanner);
-            /*TODO création d'un nouvel objet recherche qui affiche le résultat de la réponse de l'utilisateur*/
-            Recherche recherche = new Recherche();
-            recherche.afficherResultat(reponseUtilisateur);
-            exit = demanderSortie(scanner);
-        } while (!exit);
+        String reponseUtilisateur = validerReponseUtilisateur(scanner);
+        /*TODO création d'un nouvel objet recherche qui affiche le résultat de la réponse de l'utilisateur*/
+        Recherche recherche = new Recherche();
+        recherche.afficherResultat(reponseUtilisateur);
         LOGG.info("Fermeture du programme");
         scanner.close();
     }
