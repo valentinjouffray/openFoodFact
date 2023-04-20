@@ -2,6 +2,7 @@ package dev.Service;
 
 import dev.entites.*;
 import dev.dao.*;
+import dev.userInterface.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,6 +15,11 @@ import java.util.List;
  * Date de mise à jour : 20/04/2023
  */
 public class FichierService {
+
+    public static void main(String[] args) {
+        Menu menu = new Menu();
+        menu.afficherMenuPrincipal();
+    }
 
     static String FILE_NAME = "src/main/resources/open-food.csv";
 
