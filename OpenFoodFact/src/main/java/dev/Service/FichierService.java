@@ -7,12 +7,25 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/** FichierService permet de lire tous les éléments de fichier csv
+ * @author Clement
+ * @version 1.00
+ * Date de mise à jour : 20/04/2023
+ */
 public class FichierService {
 
     static String FILE_NAME = "src/main/resources/open-food.csv";
 
+    /**
+     * Liste de produits enregistrés après lecture du fichier
+     */
     private static List<Produit> produits;
 
+    /**
+     * Permet de lire les éléments du fichier csv
+     * @param file le fichier à lire
+     */
     public static void readFile(File file) throws IOException {
 
         produits = new ArrayList<Produit>();
@@ -38,8 +51,8 @@ public class FichierService {
                 p.setGradeNutrition(data[3]);
                 produitTemp.add(p);
 
-                if (data[29].contains("-")) {
-                    String[] adTemp = data[29].split("-");
+                if (data[29].contains(",")) {
+                    String[] adTemp = data[29].split(",");
                     for (int j = 0; j < adTemp.length; j++) {
                         a = new Additif();
                         a.setNom(adTemp[j]);
@@ -178,6 +191,11 @@ public class FichierService {
         fr.close();
     }
 
+    /**
+     * Permet de retirer les contraintes regex
+     * @param str le String à modifier
+     * @return str
+     */
     public static String retirerCaractere(String str)
     {
         str = str.trim().replaceAll("[0-9]+", "");
