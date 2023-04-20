@@ -9,7 +9,7 @@ public class AllergeneDaoJpa extends DaoManager implements AllergeneDao{
 
     @Override
     public List<Allergene> extraire() {
-        EntityManager entityManager = managerFactory.createEntityManager();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Allergene> allergeneTypedQuery = entityManager.createQuery("select a from Allergene a",Allergene.class);
         List<Allergene> allergenes = allergeneTypedQuery.getResultList();
         entityManager.close();
@@ -18,7 +18,7 @@ public class AllergeneDaoJpa extends DaoManager implements AllergeneDao{
 
     @Override
     public void inserer(Allergene allergene) {
-        EntityManager entityManager = managerFactory.createEntityManager();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         entityManager.persist(allergene);
@@ -28,7 +28,7 @@ public class AllergeneDaoJpa extends DaoManager implements AllergeneDao{
 
     @Override
     public int mettreAJourNom(String ancienNom, String nouveauNom) {
-        EntityManager entityManager = managerFactory.createEntityManager();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         Query query = entityManager.createQuery("update Allergene set nom = :nouveauNom where nom = :ancienNom");
@@ -43,7 +43,7 @@ public class AllergeneDaoJpa extends DaoManager implements AllergeneDao{
 
     @Override
     public int supprimer(Allergene allergene) {
-        EntityManager entityManager = managerFactory.createEntityManager();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         Query query = entityManager.createQuery("delete from Allergene a where a.id= :id");
