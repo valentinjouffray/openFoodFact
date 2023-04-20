@@ -37,6 +37,8 @@ public class Vitamine {
 
     private Double vitb9100g;
 
+    private Double vitb12100g;
+
     private Double calcium100g;
 
     private Double magnesium100g;
@@ -45,7 +47,25 @@ public class Vitamine {
 
     private Double iron100g;
 
+    private Double betaCarotene100g;
+
     public Vitamine() {
+    }
+
+    public Double getVitb12100g() {
+        return vitb12100g;
+    }
+
+    public void setVitb12100g(Double vitb12100g) {
+        this.vitb12100g = vitb12100g;
+    }
+
+    public Double getBetaCarotene100g() {
+        return betaCarotene100g;
+    }
+
+    public void setBetaCarotene100g(Double betaCarotene100g) {
+        this.betaCarotene100g = betaCarotene100g;
     }
 
     public Double getEnergie100g() {
@@ -227,10 +247,12 @@ public class Vitamine {
                 ", vitpp100g=" + vitpp100g +
                 ", vitb6100g=" + vitb6100g +
                 ", vitb9100g=" + vitb9100g +
+                ", vitb12100g=" + vitb12100g +
                 ", calcium100g=" + calcium100g +
                 ", magnesium100g=" + magnesium100g +
                 ", fer100g=" + fer100g +
                 ", iron100g=" + iron100g +
+                ", betaCarotene100g=" + betaCarotene100g +
                 '}';
     }
 }
