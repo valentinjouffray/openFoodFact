@@ -17,27 +17,80 @@ public class Produit {
     @Column(name = "nom")
     private String nom;
 
+    @Column(name = "nutritionGradeFr")
+    private GradeNutrition gradeNutrition;
+
     @Embedded
     private Vitamine vitamine;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "categorie_id")
     private Categorie categorie;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "marque_id")
     private Marque marque;
 
-    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     private List<Allergene> allergenes = new ArrayList<Allergene>();
 
-    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
-    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "produits",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     private List<Additif> additifs = new ArrayList<Additif>();
 
     public Produit() {
+    }
+
+    public GradeNutrition getGradeNutrition() {
+        return gradeNutrition;
+    }
+
+    public void setGradeNutrition(String gradeNutrition) {
+        String gradeNutritionUpperCase = gradeNutrition.toUpperCase();
+        switch (gradeNutritionUpperCase){
+            case "A" :
+                this.gradeNutrition = GradeNutrition.A;
+                break;
+            case "B" :
+                this.gradeNutrition = GradeNutrition.B;
+                break;
+            case "C" :
+                this.gradeNutrition = GradeNutrition.C;
+                break;
+            case "D" :
+                this.gradeNutrition = GradeNutrition.D;
+                break;
+            case "E" :
+                this.gradeNutrition = GradeNutrition.E;
+                break;
+        }
+    }
+
+    public void setGradeNutrition(char gradeNutrition){
+        char gradeNutritionUpperCase = Character.toUpperCase(gradeNutrition);
+        switch (gradeNutritionUpperCase){
+            case 'A' :
+                this.gradeNutrition = GradeNutrition.A;
+                break;
+            case 'B' :
+                this.gradeNutrition = GradeNutrition.B;
+                break;
+            case 'C' :
+                this.gradeNutrition = GradeNutrition.C;
+                break;
+            case 'D' :
+                this.gradeNutrition = GradeNutrition.D;
+                break;
+            case 'E' :
+                this.gradeNutrition = GradeNutrition.E;
+                break;
+        }
+    }
+
+    public void setGradeNutrition(GradeNutrition gradeNutrition) {
+        this.gradeNutrition = gradeNutrition;
     }
 
     public Vitamine getVitamine() {
@@ -109,12 +162,7 @@ public class Produit {
         return "Produit{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", vitamine=" + vitamine +
-                ", categorie=" + categorie +
-                ", marque=" + marque +
-                ", allergenes=" + allergenes +
-                ", ingredients=" + ingredients +
-                ", additifs=" + additifs +
+                ", nutritionScore='" + gradeNutrition + '\'' +
                 '}';
     }
 }

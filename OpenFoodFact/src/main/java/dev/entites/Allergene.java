@@ -17,7 +17,7 @@ public class Allergene {
     @Column(name = "nom")
     private String nom;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name = "produit_id")
     private List<Produit> produits = new ArrayList<Produit>();
 
@@ -53,7 +53,6 @@ public class Allergene {
         return "Allergene{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", produits=" + produits +
                 '}';
     }
 }
