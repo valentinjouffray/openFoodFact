@@ -181,6 +181,9 @@ public class FichierService {
     public static String retirerCaractere(String str)
     {
         str = str.trim().replaceAll("[0-9]+", "");
+        str = str.trim().replaceAll("-", ",");
+        str = str.trim().replaceAll(";", ",");
+        str = str.trim().replaceAll("\\.", ",");
         str = str.trim().replaceAll("_", "");
         str = str.trim().replaceAll("\\*", "");
         str = str.trim().replaceAll("%", "");
@@ -188,6 +191,7 @@ public class FichierService {
         str = str.trim().replaceAll("]", "");
         str = str.trim().replaceAll("\\(", "");
         str = str.trim().replaceAll("\\)", "");
+        str = str.trim().replaceAll("Confiture", ",Confiture");
 
         return str;
     }
