@@ -6,23 +6,17 @@ import org.slf4j.LoggerFactory;
 import java.util.Scanner;
 
 public class Menu {
-    private final int OPTION_RECHERCHE_N_MEILLEUR_MARQUE = 1;
-    private final int OPTION_RECHERCHE_N_MEILLEUR_CATEGORIE = 2;
-    private final int OPTION_RECHERCHE_N_MEILLEUR_MARQUE_CATEGORIE = 3;
-    private final int OPTION_RECHERCHE_N_INGREDIENTS_PLUS_COURANTS_AVEC_NB_PRODUITS = 4;
-    private final int OPTION_RECHERCHE_N_ALLERGENES_PLUS_COURANTS_AVEC_NB_PRODUITS = 5;
-    private final int OPTION_RECHERCHE_N_ADDITIFS_PLUS_COURANTS_AVEC_NB_PRODUITS = 6;
     private static final Logger LOGG = LoggerFactory.getLogger(Menu.class);
 
     public void afficherMenuPrincipal(){
         LOGG.info("placeholder app name");//TODO remplacer le titre de l'application
-        boolean exit = false;
+        boolean exit;
         Scanner scanner = new Scanner(System.in);
         do {
-            validerReponseUtilisateur(scanner);
+            String reponseUtilisateur = validerReponseUtilisateur(scanner);
             /*TODO création d'un nouvel objet recherche qui affiche le résultat de la réponse de l'utilisateur*/
             Recherche recherche = new Recherche();
-            recherche.afficherResultat();
+            recherche.afficherResultat(reponseUtilisateur);
             exit = demanderSortie(scanner);
         } while (!exit);
         LOGG.info("Fermeture du programme");
@@ -35,8 +29,8 @@ public class Menu {
         return false;
     }
 
-    private void validerReponseUtilisateur(Scanner scanner) {
-        int reponseUtilisateur;
+    private String validerReponseUtilisateur(Scanner scanner) {
+        int reponseUtilisateur = 0;
         boolean estValeurValide = false;
         while (!estValeurValide) {
             afficherOptions();
@@ -48,6 +42,7 @@ public class Menu {
                 estValeurValide = true;
             }
         }
+        return Integer.toString(reponseUtilisateur);
     }
 
     private void afficherOptions() {
